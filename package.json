@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "db:dev:migrate": "npx sequelize-cli db:migrate",
+    "db:dev:migrate:down": "npx sequelize-cli db:migrate:undo:all",
+    "db:dev:migrate:create": "npx sequelize-cli migration:generate --name",
+    "db:dev:seed": "npx sequelize-cli db:seed:all",
+    "db:dev:seed:create": "npx sequelize-cli seed:generate --name"
   },
   "author": "Harsh Kumar",
   "license": "ISC",
