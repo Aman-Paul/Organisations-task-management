@@ -1,7 +1,9 @@
 require("dotenv").config();
 require("express-async-errors");
 const { Sequelize } = require('sequelize');
+
 const DB_CONFIG = require('./database/db.config.json');
+const authRoutes = require('./routes/authRoutes');
 
 
 const cors = require("cors");
@@ -27,10 +29,8 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// // routes
-// app.use(`/api/${process.env.API_VERSION}/users`, userRoutes);
-// app.use(`/api/${process.env.API_VERSION}/courses`, courseRoutes);
-// app.use(`/api/${process.env.API_VERSION}/units`, unitRoutes);
+// routes
+app.use(`/auth`, authRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware); 
