@@ -38,11 +38,11 @@ module.exports = {
       },
       roleId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       orgId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       isActive: {
         type: Sequelize.BOOLEAN,

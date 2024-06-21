@@ -20,11 +20,11 @@ User.init({
   },
   orgId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   roleId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   }
 }, {
   sequelize,
