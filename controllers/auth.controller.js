@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 
 const User = require("../database/models/user.model");
 const { successResponseHandler, errorResponseHandler } = require('../handlers/responseHandlers');
-const { userCreatedSuccessfully } = require('../config/responseMessages/successMessages.json')
-const { userAlreadyExists, somethingWentWrong, missingRequiredParams } = require('../config/responseMessages/errorMessages.json');
-const { signUpParams } = require('../config/requiredParams.json')
+const { userCreatedSuccessfully, userSignInSuccessfully } = require('../config/responseMessages/successMessages.json')
+const { userAlreadyExists, somethingWentWrong, missingRequiredParams, noSuchUserFound } = require('../config/responseMessages/errorMessages.json');
+const { signUpParams, signInParams } = require('../config/requiredParams.json')
 const { validateParams, signJwt } = require("../handlers/commonHandlers");
  
 const authController = {}
@@ -39,4 +39,31 @@ authController.signup = async (req, res) => {
     }
 }
 
+
+authController.signin = async (req, res) => {
+    try {
+        const bodyParams = req.body;
+        const missingParams = validateParams(signInParams, bodyParams);
+
+        if(missingParams.length > 0) {
+            return res.status(StatusCodes.BAD_REQUEST).send(errorResponseHandler(`${missingRequiredParams}${missingParams.join(", ")}`));
+        }
+
+        const user = await User.findOne({ where: { email: bodyParams.email }, attributes: ['id', 'uniqueId', 'email', 'password']});
+        if(!user) {
+            return res.status(StatusCodes.BAD_REQUEST).send(errorResponseHandler(noSuchUserFound));
+        }
+
+        const token = signJwt(user.id, user.email);
+        const response = {
+            access_token: token,
+            email: user.email
+        };
+
+        return res.status(StatusCodes.OK).send(successResponseHandler(userSignInSuccessfully, response));
+    } catch (error) {
+        console.error("Error in authController:signin", error);
+        return res.status(StatusCodes.BAD_REQUEST).send(errorResponseHandler(somethingWentWrong, error));
+    }
+} 
 module.exports = authController;

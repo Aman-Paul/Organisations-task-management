@@ -2,5 +2,6 @@
     "userAlreadyExists": "User already exists.",
     "pleaseProvideAValidPassword": "Please provide a valid password.",
     "somethingWentWrong": "Something went wrong.",
-    "missingRequiredParams": "Missing required parameters: "
+    "missingRequiredParams": "Missing required parameters: ",
+    "noSuchUserFound": "No such user exists."
 }

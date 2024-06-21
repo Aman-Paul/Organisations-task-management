@@ -2,7 +2,7 @@ require("dotenv").config();
 require("express-async-errors");
 
 const DB_CONFIG = require('./database/db.config.json');
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/auth.routes');
 
 
 const cors = require("cors");

@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../database/models/user.model');
-const authController = require('../controllers/authController');
+const authController = require('../controllers/auth.controller');
 const router = express.Router();
 
 router.post('/signup', (req, res) => {
@@ -8,7 +8,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/signin', (req, res) => {
-  res.send(`User signin`);
+  authController.signin(req, res);
 });
 
 module.exports = router;
