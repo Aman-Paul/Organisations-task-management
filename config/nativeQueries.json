@@ -1,0 +1,3 @@
+{
+    "getOrgList": "SELECT o.uniqueId as orgId, o.name, o.email, o.location from users u INNER JOIN organisations o ON o.id = u.orgId where u.id = ?;"
+}

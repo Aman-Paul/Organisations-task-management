@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const sequelize = require('../database/connection');
 
 const commonHandlers = {};
 
@@ -19,4 +20,15 @@ commonHandlers.signJwt = (userId, email) => {
         console.log("Error in commonHandlers:signJwt", error);
     }
 }
+
+commonHandlers.executeSqlQuery = async (query, replacements)=>{
+    try {
+        const [result] = await sequelize.query(query, { replacements });
+        return result;
+    } catch (error) {
+        console.log("Error in commonHandlers:executeSqlQuery", error);
+        return error;
+    }
+}
+
 module.exports = commonHandlers;

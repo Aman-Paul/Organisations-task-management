@@ -1,6 +1,7 @@
 const express = require('express');
-const User = require('../database/models/user.model');
-const authController = require('../controllers/auth.controller');
+const orgController = require('../controllers/org.controller');
 const router = express.Router();
+
+router.get('/list', orgController.getOrgList)
 
 module.exports = router;

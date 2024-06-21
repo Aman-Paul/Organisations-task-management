@@ -1,4 +1,5 @@
 {
     "userCreatedSuccessfully": "User created successfully.",
-    "userSignInSuccessfully": "User signed in successfully"
+    "userSignInSuccessfully": "User signed in successfully",
+    "orgListFoundSuccessfully": "Organisations list found successfully."
 }
