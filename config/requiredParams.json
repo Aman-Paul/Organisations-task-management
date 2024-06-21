@@ -1,4 +1,5 @@
 {
     "signUpParams": ["name", "email", "password", "orgId", "roleId"],
-    "signInParams": ["email", "password"]
+    "signInParams": ["email", "password"],
+    "createOrgParams": ["name", "email"]
 }

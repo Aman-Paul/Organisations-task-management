@@ -1,1 +1,8 @@
-{}
+{
+    "USER_ROLES": {
+        "ADMIN": "ADMIN",
+        "OWNER": "OWNER",
+        "MEMBER": "MEMBER",
+        "USER": "USER"
+    }
+}
